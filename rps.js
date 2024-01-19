@@ -1,3 +1,8 @@
+// initialise counter variables
+let counter = 0
+let playerScore = 0
+let computerScore = 0
+
 function getComputerChoice() {
     let determinator = Math.random();
     console.log(determinator)
@@ -62,10 +67,46 @@ btnScissors.addEventListener('click', () => {
     playerSelection = "scissors";
 })
 
-// initialise counter variable
-let counter = 0
-let playerScore = 0
-let computerScore = 0
+// create an overall button listener for game
+
+let btn = document.querySelectorAll("#btn");
+
+btn.forEach(function(button) {
+    button.addEventListener('click', game)
+});
+
+function game() {
+    if (counter < 5) {
+        let computerSelection = getComputerChoice();
+        let result = playRound(playerSelection, computerSelection);
+        if (result.includes("You Win")) {
+            ++playerScore;
+            ++counter;
+            alert(result)
+            alert(`Score is: \n You: ${playerScore} \n Computer: ${computerScore}`)
+        } else if (result.includes("You Lose")) {
+            ++computerScore;
+            ++counter;
+            alert(result)
+            alert(`Score is: \n You: ${playerScore} \n Computer: ${computerScore}`)
+        } else {
+            alert(result)
+            alert(`Score is: \n You: ${playerScore} \n Computer: ${computerScore}`)
+        }
+        playerSelection = "";
+    }
+
+    if (computerScore == 3 || playerScore == 3) {
+        playerSelection = "";
+        alert(`Game over! Final score is: \n Your score: ${playerScore} \n Computer score ${computerScore}`)
+        counter = 0;
+        playerScore = 0;
+        computerScore = 0;
+    }
+}
+
+
+
 
 // function game() {
 //     counter = 0
