@@ -43,31 +43,55 @@ function playRound(playerSelection, computerSelection) {
     }
 }
 
-function game() {
-    counter = 0
-    playerScore = 0
-    computerScore = 0
-    while (counter < 5) {
-        let playerSelection = prompt("Choose: \n Rock \n Paper \n Scissors")
-        let computerSelection = getComputerChoice();
-        playRound(playerSelection, computerSelection);
-        let result = playRound(playerSelection, computerSelection);
-        if (result.includes("You Win")) {
-            playerScore++;
-            counter++;
-            alert(result)
-            alert(`Score is: \n You: ${playerScore} \n Computer: ${computerScore}`)
-        } else if (result.includes("You Lose")) {
-            computerScore++;
-            counter++;
-            alert(result)
-            alert(`Score is: \n You: ${playerScore} \n Computer: ${computerScore}`)
-        } else {
-            alert(result)
-            alert(`Score is: \n You: ${playerScore} \n Computer: ${computerScore}`)
-        }
-    }
-    alert(`Game over! Final score is: \n Your score: ${playerScore} \n Computer score ${computerScore}`)
-}
+// Creating 3 buttons
 
-console.log(game())
+let playerSelection = "";
+
+let btnRock = document.querySelector('.rock');
+let btnPaper = document.querySelector('.paper');
+let btnScissors = document.querySelector('.scissors');
+
+btnRock.addEventListener('click', () => {
+    playerSelection = "rock";
+    console.log(playerSelection)
+})
+btnPaper.addEventListener('click', () => {
+    playerSelection = "paper";
+})
+btnScissors.addEventListener('click', () => {
+    playerSelection = "scissors";
+})
+
+// initialise counter variable
+let counter = 0
+let playerScore = 0
+let computerScore = 0
+
+// function game() {
+//     counter = 0
+//     playerScore = 0
+//     computerScore = 0
+//     while (counter < 5) {
+//         let playerSelection = prompt("Choose: \n Rock \n Paper \n Scissors")
+//         let computerSelection = getComputerChoice();
+//         playRound(playerSelection, computerSelection);
+//         let result = playRound(playerSelection, computerSelection);
+//         if (result.includes("You Win")) {
+//             playerScore++;
+//             counter++;
+//             alert(result)
+//             alert(`Score is: \n You: ${playerScore} \n Computer: ${computerScore}`)
+//         } else if (result.includes("You Lose")) {
+//             computerScore++;
+//             counter++;
+//             alert(result)
+//             alert(`Score is: \n You: ${playerScore} \n Computer: ${computerScore}`)
+//         } else {
+//             alert(result)
+//             alert(`Score is: \n You: ${playerScore} \n Computer: ${computerScore}`)
+//         }
+//     }
+//     alert(`Game over! Final score is: \n Your score: ${playerScore} \n Computer score ${computerScore}`)
+// }
+
+// console.log(game())
