@@ -75,6 +75,9 @@ btn.forEach(function(button) {
     button.addEventListener('click', game)
 });
 
+let rpsResult = document.querySelector('.rpsResult');
+let scoreTally = document.querySelector('.scoreTally');
+
 function game() {
     if (counter < 5) {
         let computerSelection = getComputerChoice();
@@ -82,23 +85,23 @@ function game() {
         if (result.includes("You Win")) {
             ++playerScore;
             ++counter;
-            alert(result)
-            alert(`Score is: \n You: ${playerScore} \n Computer: ${computerScore}`)
+            rpsResult.textContent = result;
+            scoreTally.textContent = `Score is: \n You: ${playerScore} \n Computer: ${computerScore}`
         } else if (result.includes("You Lose")) {
             ++computerScore;
             ++counter;
-            alert(result)
-            alert(`Score is: \n You: ${playerScore} \n Computer: ${computerScore}`)
+            rpsResult.textContent = result;
+            scoreTally.textContent = `Score is: \n You: ${playerScore} \n Computer: ${computerScore}`
         } else {
-            alert(result)
-            alert(`Score is: \n You: ${playerScore} \n Computer: ${computerScore}`)
+            rpsResult.textContent = result;
+            scoreTally.textContent = `Score is: \n You: ${playerScore} \n Computer: ${computerScore}`
         }
         playerSelection = "";
     }
 
     if (computerScore == 3 || playerScore == 3) {
         playerSelection = "";
-        alert(`Game over! Final score is: \n Your score: ${playerScore} \n Computer score ${computerScore}`)
+        scoreTally.textContent = `Game over! Final score is: \n Your score: ${playerScore} \n Computer score ${computerScore}`
         counter = 0;
         playerScore = 0;
         computerScore = 0;
